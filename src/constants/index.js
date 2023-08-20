@@ -1,0 +1,2 @@
+exports.STATUS_VALID = "VALID";
+exports.STATUS_INVALID = "INVALID";
