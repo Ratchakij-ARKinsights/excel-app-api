@@ -7,6 +7,7 @@ const tokenService = require('../services/token-service');
 exports.register = async (req, res, next) => {
     try {
         const value = validateRegister(req.body);
+
         const isUserExist = await userService.checkEmailExist(value.email);
 
         if (isUserExist) {
