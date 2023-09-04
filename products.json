@@ -1,0 +1,110 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "motor",
+      "config": {
+        "rate": [
+          {
+            "rate_start": 50000,
+            "rate_end": 150000,
+            "percent": 0.5
+          },
+          {
+            "rate_start": 150001,
+            "rate_end": 200000,
+            "percent": 1
+          },
+          {
+            "rate_start": 200001,
+            "rate_end": 450000,
+            "percent": 1.5
+          }
+        ]
+      }
+    },
+
+    {
+      "id": 2,
+      "name": "renewal",
+      "config": {
+        "rate": [
+          {
+            "rate_start": 50000,
+            "rate_end": 150000
+          },
+          {
+            "rate_start": 150001,
+            "rate_end": 200000
+          },
+          {
+            "rate_start": 200001,
+            "rate_end": 450000
+          }
+        ]
+      }
+    }
+  ],
+
+  "agents": [
+    {
+      "id": 1,
+      "code": "A1XXXX",
+      "name": "App fddsf",
+      "position": "Supervisor",
+      "transactions": [
+        {
+          "product_type": "P1",
+          "product_id": 1,
+          "price": 20000,
+          "total": 1,
+          "totalAmout": 20000
+        },
+        {
+          "product_type": "P2",
+          "product_id": 1,
+          "price": 10000,
+          "total": 2,
+          "totalAmout": 20000
+        },
+        {
+          "product_type": "P3",
+          "product_id": 1,
+          "price": 5000,
+          "total": 2,
+          "totalAmout": 10000
+        }
+      ]
+    },
+
+    {
+      "id": 2,
+      "code": "A2XXXX",
+      "name": "Bccc fddsf",
+      "position": "Telesales",
+      "transactions": [
+        {
+          "product_type": "P1",
+          "product_id": 1,
+          "price": 40000,
+          "total": 2,
+          "totalAmout": 40000
+        },
+        {
+          "product_type": "P2",
+          "product_id": 1,
+          "price": 10000,
+          "total": 2,
+          "totalAmout": 20000
+        },
+        {
+          "product_type": "P3",
+          "product_id": 1,
+          "price": 5000,
+          "total": 2,
+          "totalAmout": 10000
+        }
+      ]
+    }
+  ]
+}
