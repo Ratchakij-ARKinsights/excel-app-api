@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Employee.associate = (models) => {
     Employee.hasMany(models.Order, {
       foreignKey: {
-        name: "employeeId",
+        name: "agentId",
         allowNull: false,
       },
       onDelete: "RESTRICT",

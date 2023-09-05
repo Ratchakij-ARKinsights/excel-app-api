@@ -11,6 +11,7 @@ const helmet = require("helmet"); // เป็น middleware ที่ช่ว�
 
 const authRoute = require("./routes/auth-route");
 const employeeRoute = require("./routes/employee-route");
+const orderRoute = require("./routes/order-route");
 
 const notFoundMiddleware = require("./middlewares/not-found");
 const errorMiddleware = require("./middlewares/error");
@@ -31,6 +32,7 @@ app.use(express.json()); // แปลงข้อมูลที่มีรู�
 
 app.use("/auth", authRoute);
 app.use("/employee", authenticate, employeeRoute);
+app.use("/order", authenticate, orderRoute);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);

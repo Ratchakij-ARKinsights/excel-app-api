@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     "Order",
     {
       date: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
       price: {
@@ -12,11 +12,23 @@ module.exports = (sequelize, DataTypes) => {
       },
       status: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
-        default: true,
+        defaultValue: true,
+      },
+      description: {
+        type: DataTypes.STRING,
       },
     },
     { underscored: true } // ใช้ขีดล่างเป็นตัวคั่นชื่อฟิลด์ ชื่อฟิลด์จะเป็น first_name อัตโนมัติ
   );
+  Order.associate = (models) => {
+    Order.belongsTo(models.Order, {
+      foreignKey: {
+        name: "agentId",
+        allowNull: false,
+      },
+      onDelete: "RESTRICT",
+      onUpdate: "RESTRICT",
+    });
+  };
   return Order;
 };
