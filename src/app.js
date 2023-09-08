@@ -1,7 +1,7 @@
 // สร้าง ฐานข้อมูล
 // const { sequelize } = require("./models");
-// sequelize.sync({ force: true });
 // sequelize.sync({ alter: true });
+// sequelize.sync({ force: true });
 
 require("dotenv").config();
 const express = require("express");
@@ -12,6 +12,7 @@ const helmet = require("helmet"); // เป็น middleware ที่ช่ว�
 const authRoute = require("./routes/auth-route");
 const employeeRoute = require("./routes/employee-route");
 const orderRoute = require("./routes/order-route");
+const comTierRoute = require("./routes/comTier-route");
 
 const notFoundMiddleware = require("./middlewares/not-found");
 const errorMiddleware = require("./middlewares/error");
@@ -33,6 +34,7 @@ app.use(express.json()); // แปลงข้อมูลที่มีรู�
 app.use("/auth", authRoute);
 app.use("/employee", authenticate, employeeRoute);
 app.use("/order", authenticate, orderRoute);
+app.use("/comTier", authenticate, comTierRoute);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);

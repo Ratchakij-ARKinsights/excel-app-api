@@ -29,13 +29,13 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: "RESTRICT",
     });
 
-    Employee.hasMany(models.Employee, {
+    Employee.belongsTo(models.Employee, {
       foreignKey: {
         name: "leaderId",
         allowNull: true,
       },
-      onDelete: null,
-      onUpdate: "CASCADE",
+      onDelete: "SET NULL",
+      onUpdate: "SET NULL",
     });
   };
   return Employee;

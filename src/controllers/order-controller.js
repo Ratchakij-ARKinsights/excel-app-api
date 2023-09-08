@@ -1,4 +1,4 @@
-const { Order } = require("../models");
+const { Employee, Order, sequelize } = require("../models");
 const createError = require("../utils/create-error");
 
 exports.createOrder = async (req, res, next) => {
@@ -35,3 +35,31 @@ exports.getAllOrder = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getTotalPriceByAgentId = async (req, res, next) => {
+  try {
+    const totalPriceByAgentId = await Order.findAll({
+      attributes: [
+        [sequelize.col("Employee.id"), "agentId"],
+        [sequelize.col("Employee.name"), "agentName"],
+        [sequelize.col("Employee.type"), "agentType"],
+        [sequelize.fn("SUM", sequelize.col("price")), "sumPrice"],
+        [sequelize.col("Employee.leader_id"), "leaderId"],
+      ],
+      include: [
+        {
+          model: Employee,
+          // as: "Agent",
+          attributes: [],
+        },
+      ],
+      group: ["agent_id"],
+      order: [[sequelize.fn("SUM", sequelize.col("price")), "DESC"]],
+      raw: true, // Return raw data
+    });
+    res.status(200).json({ totalPriceByAgentId });
+  } catch (err) {
+    next(err);
+  }
+};
+

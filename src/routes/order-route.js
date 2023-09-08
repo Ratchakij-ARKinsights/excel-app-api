@@ -6,6 +6,7 @@ const router = express.Router();
 
 // GET
 router.get("/", orderController.getAllOrder);
+router.get("/total-price-by-agent", orderController.getTotalPriceByAgentId);
 
 // POST
 router.post("/", orderController.createOrder);

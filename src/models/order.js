@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     { underscored: true } // ใช้ขีดล่างเป็นตัวคั่นชื่อฟิลด์ ชื่อฟิลด์จะเป็น first_name อัตโนมัติ
   );
   Order.associate = (models) => {
-    Order.belongsTo(models.Order, {
+    Order.belongsTo(models.Employee, {
       foreignKey: {
         name: "agentId",
         allowNull: false,
